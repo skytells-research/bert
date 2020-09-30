@@ -16,7 +16,11 @@
           <h4>AL BERT</h4>
             <form role="form" method='POST' action='/'>
               <div class="form-group">
-                <textarea name="paragraph" class="form-control" id="url-box" placeholder="Enter a paragraph" style="max-width: 300px;" autofocus required>{% if result %}{{ result[2] }}{% endif %}</textarea>
+                <textarea name="paragraph" class="form-control" id="url-box" placeholder="Enter a paragraph" style="max-width: 300px;" autofocus required>
+			    {% if result %}
+          			{{ result[2] }}
+		        {% endif %}
+		        </textarea>
                  <br>
                 <input type="text" name="question" class="form-control" id="url-box" placeholder="Enter a question" style="max-width: 300px;" autofocus required>
               </div>
