@@ -1,6 +1,6 @@
 import os
 from flask import Flask, render_template
-from flask import request
+from flask import request,jsonify
 
 
 import torch
@@ -74,6 +74,17 @@ def index():
 
     # return answer
     return render_template("index.html")
+
+@app.route("/predict",methods=['POST'])
+def predict():
+    doc = request.json["document"]
+    q = request.json["question"]
+    try:
+        out = answer_question(doc,q)
+        return jsonify({"result":out})
+    except Exception as e:
+        print(e)
+        return jsonify({"result":"Model Failed"})
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
