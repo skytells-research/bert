@@ -10,8 +10,8 @@ from transformers import AutoTokenizer, AutoModelForQuestionAnswering
 # name = "distilbert-base-uncased-distilled-squad"
 # name = "mrm8488/xlm-multi-finetuned-xquadv1" [Multi-language support]
 # name = "mrm8488/bert-small-finetuned-squadv2" [Lightweight model]
-# name = "bert-medium-finetuned-squadv2"
-name = "bert-medium-finetuned-squadv2"
+# name = "mrm8488/bert-medium-finetuned-squadv2"
+name = "mrm8488/bert-medium-finetuned-squadv2"
 
 tokenizer = AutoTokenizer.from_pretrained(name)
 
@@ -84,7 +84,7 @@ def predict():
     q = request.json["question"]
     try:
         answer = answer_question(q, doc)
-        return jsonify({"paragraph":doc, "answer":answer})
+        return jsonify({"paragraph":doc, "results":{"question":q, "answer":answer}})
     except Exception as e:
         print(e)
         return jsonify({"result":"Model Failed"})
