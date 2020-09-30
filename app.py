@@ -80,7 +80,7 @@ def predict():
     doc = request.json["document"]
     q = request.json["question"]
     try:
-        out = answer_question(doc,q)
+        out = answer_question(q, doc)
         return jsonify({"result":out})
     except Exception as e:
         print(e)
