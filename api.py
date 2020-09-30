@@ -5,13 +5,8 @@ from bert import QA
 
 app = Flask(__name__)
 CORS(app)
-lang = request.json["lang"]
-if (lang == "ar") {
-    modelName = "bert-base-multilingual-cased"
-}else{
-    modelName = "bert-base-multilingual-cased"
-}
-model = QA(modelName)
+
+model = QA("model")
 
 @app.route("/predict",methods=['POST'])
 def predict():
