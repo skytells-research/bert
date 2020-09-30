@@ -77,12 +77,12 @@ def index():
 
 @app.route("/predict",methods=['POST', 'GET'])
 def predict():
-    doc = request.json["doc"]
-    q = request.json["q"]
+    doc = request.json["paragraph"]
+    q = request.json["question"]
     try:
          result = []
-         bert_abstract = form['paragraph']
-         question = form['question']
+         bert_abstract = doc
+         question = q
          result.append(form['question'])
          result.append(answer_question(q, doc))
          result.append(form['paragraph'])
