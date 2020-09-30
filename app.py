@@ -75,7 +75,7 @@ def index():
     # return answer
     return render_template("index.html")
 
-@app.route("/predict",methods=['POST', 'POST'])
+@app.route("/predict",methods=['POST', 'GET'])
 def predict():
     doc = request.json["doc"]
     q = request.json["q"]
