@@ -75,12 +75,12 @@ def index():
     # return answer
     return render_template("index.html")
 
-@app.route("/predict",methods=['POST'])
+@app.route("/predict",methods=['POST', 'POST'])
 def predict():
-    doc = request.json["document"]
-    q = request.json["question"]
+    doc = request.json["doc"]
+    q = request.json["q"]
     try:
-        out = answer_question(q, doc)
+        out = model.predict(doc,q)
         return jsonify({"result":out})
     except Exception as e:
         print(e)
