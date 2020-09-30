@@ -84,7 +84,7 @@ def predict():
          bert_abstract = form['paragraph']
          question = form['question']
          result.append(form['question'])
-         result.append(answer_question(question, bert_abstract))
+         result.append(answer_question(q, doc))
          result.append(form['paragraph'])
         return jsonify({"result":"paragraph":result[0], "answer":result[1]})
     except Exception as e:
