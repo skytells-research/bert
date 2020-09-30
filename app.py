@@ -80,13 +80,8 @@ def predict():
     doc = request.json["paragraph"]
     q = request.json["question"]
     try:
-         result = []
-         bert_abstract = doc
-         question = q
-         result.append(form['question'])
-         result.append(answer_question(q, doc))
-         result.append(form['paragraph'])
-        return jsonify({"result":"paragraph":result[0], "answer":result[1]})
+        
+        return jsonify(answer_question(q, doc))
     except Exception as e:
         print(e)
         return jsonify({"result":"Model Failed"})
